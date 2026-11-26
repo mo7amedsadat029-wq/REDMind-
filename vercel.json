@@ -1,13 +1,13 @@
 {
   "functions": {
-    "api/index.ts": {
+    "api/index.mjs": {
       "includeFiles": "{data,results}/**"
     }
   },
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/index" },
-    { "source": "/figures/(.*)", "destination": "/api/index" },
-    { "source": "/presentation-slides/(.*)", "destination": "/api/index" },
+    { "source": "/api/(.*)", "destination": "/api/index.mjs" },
+    { "source": "/figures/(.*)", "destination": "/api/index.mjs" },
+    { "source": "/presentation-slides/(.*)", "destination": "/api/index.mjs" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
