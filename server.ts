@@ -1208,26 +1208,16 @@ app.use(express.json({ limit: '2mb' }));
     }
   });
 
- // Vite / Static SPA serving
-if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
-  const { createServer: createViteServer } = await import('vite');
-  const vite = await createViteServer({
-    server: { middlewareMode: true, hmr: false },
-    appType: 'spa',
-  });
-  app.use(vite.middlewares);
-} else if (!process.env.VERCEL) {
+if (!process.env.VERCEL) {
   const distDir = path.resolve(ROOT, 'dist');
   app.use(express.static(distDir));
   app.get('/{*splat}', (_req, res) => {
     res.sendFile(path.join(distDir, 'index.html'));
   });
-}
-
-if (!process.env.VERCEL) {
   app.listen(3000, '0.0.0.0', () => {
     console.log('REDMind v2.1.0 Full-Stack Server listening on http://0.0.0');
   });
 }
 
 export default app;
+
