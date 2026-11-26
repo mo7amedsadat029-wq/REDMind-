@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-     "scripts": {
+  "scripts": {
     "dev": "tsx server.ts",
     "build": "vite build && npx esbuild server.ts --bundle --platform=node --format=esm --packages=external --outfile=api/index.mjs",
     "preview": "vite preview",
@@ -11,7 +11,6 @@
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit"
   },
-
   "devDependencies": {
     "vite": "^8.0.0"
   },
@@ -23,7 +22,7 @@
     "@types/pdfkit": "^0.17.7",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
-    "@vitejs/plugin-react": "^6.3.0",
+    "@vitejs/plugin-react": "^4.3.0",
     "express": "^5.3.0",
     "fflate": "^0.8.3",
     "js-yaml": "^5.5.0",
@@ -35,6 +34,6 @@
     "react-dom": "^19.3.1",
     "tailwindcss": "^4.3.5",
     "tsx": "^4.23.15",
-    "typescript": "^7.0.2",
+    "typescript": "^7.0.2"
   }
-
+}
