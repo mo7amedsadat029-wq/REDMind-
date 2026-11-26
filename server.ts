@@ -3,7 +3,6 @@ import fs from 'fs';
 import path from 'path';
 import * as yaml from 'js-yaml';
 import { zipSync } from 'fflate';
-import { createServer as createViteServer } from 'vite';
 import { loadNpzFile, parseCsvRecords } from './lib/npzParser';
 import {
   DEFAULT_SIM_CONFIG,
@@ -178,7 +177,8 @@ const FIGURE_CATALOG: Array<{
   },
 ];
 
-async function startServer() {
+const app = express();
+app.use(express.json({ limit: '2mb' }));
   const app = express();
   app.use(express.json({ limit: '2mb' }));
 
@@ -1210,24 +1210,26 @@ async function startServer() {
     }
   });
 
-  // Vite / Static SPA serving
-  if (process.env.NODE_ENV !== 'production') {
-    const vite = await createViteServer({
-      server: { middlewareMode: true, hmr: false },
-      appType: 'spa',
-    });
-    app.use(vite.middlewares);
-  } else {
-    const distDir = path.resolve(ROOT, 'dist');
-    app.use(express.static(distDir));
-    app.get('/{*splat}', (_req, res) => {
-      res.sendFile(path.join(distDir, 'index.html'));
-    });
-  }
-
-  app.listen(3000, '0.0.0.0', () => {
-    console.log('REDMind v2.1.0 Full-Stack Server listening on http://0.0.0.0:3000');
+ // Vite / Static SPA serving
+if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
+  const { createServer: createViteServer } = await import('vite');
+  const vite = await createViteServer({
+    server: { middlewareMode: true, hmr: false },
+    appType: 'spa',
+  });
+  app.use(vite.middlewares);
+} else if (!process.env.VERCEL) {
+  const distDir = path.resolve(ROOT, 'dist');
+  app.use(express.static(distDir));
+  app.get('/{*splat}', (_req, res) => {
+    res.sendFile(path.join(distDir, 'index.html'));
   });
 }
 
-startServer();
+if (!process.env.VERCEL) {
+  app.listen(3000, '0.0.0.0', () => {
+    console.log('REDMind v2.1.0 Full-Stack Server listening on http://0.0.0');
+  });
+}
+
+export default app;
