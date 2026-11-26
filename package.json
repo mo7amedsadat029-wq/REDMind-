@@ -3,15 +3,15 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-   "scripts": {
+     "scripts": {
     "dev": "tsx server.ts",
     "build": "vite build && npx esbuild server.ts --bundle --platform=node --format=esm --packages=external --outfile=api/index.mjs",
-    "vercel-build": "vite build && npx esbuild server.ts --bundle --platform=node --format=esm --packages=external --outfile=api/index.mjs",
     "preview": "vite preview",
     "start": "NODE_ENV=production tsx server.ts",
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit"
   },
+
   "devDependencies": {
     "vite": "^8.0.0"
   },
