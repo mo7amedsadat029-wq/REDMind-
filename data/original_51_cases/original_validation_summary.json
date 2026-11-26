@@ -1,0 +1,35 @@
+{
+  "gurreri_validation": [
+    {
+      "parameter": "Open-Circuit Voltage (OCV)",
+      "published": 0.155,
+      "simulated": 0.1554030164191571,
+      "unit": "V",
+      "rel_error": 0.002600105930045832,
+      "passed": true
+    },
+    {
+      "parameter": "Channel Pressure Drop",
+      "published": 146.5,
+      "simulated": 146.50205761316872,
+      "unit": "Pa",
+      "rel_error": 1.4045141083388692e-05,
+      "passed": true
+    },
+    {
+      "parameter": "Peak Gross Power Density",
+      "published": 3.8,
+      "simulated": 3.8972572493907753,
+      "unit": "W/m2",
+      "rel_error": 0.025594012997572503,
+      "passed": true
+    }
+  ],
+  "long_comparison": {
+    "ocv_spatial_V": 0.1554030282863202,
+    "ocv_lumped_V": 0.15540508426699662,
+    "r_spatial_Ohm_m2": 0.0015491726455684365,
+    "r_lumped_Ohm_m2": 0.0015491746344408694,
+    "notes": "Long et al.'s lumped model neglects concentration polarization, which over-predicts OCV by 0.00% and under-predicts resistance by 0.00% compared to the spatially resolved simulator."
+  }
+}

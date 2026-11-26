@@ -1,0 +1,4 @@
+benchmark_name,parameter,published_value,simulated_value,unit,relative_error,passed,result_classification,notes
+Gurreri et al. (2017),Open-Circuit Voltage (OCV),0.155,0.1552064329330406,V,0.0013318253744554556,True,Literature benchmark,Matches theoretical Donnan-Nernst EMF with ~89% permselectivity
+Gurreri et al. (2017),Channel Pressure Drop,146.5,146.50205761316872,Pa,1.4045141083388692e-05,True,Literature benchmark,Exact agreement with 2D Navier-Stokes plane Poiseuille solution
+Gurreri et al. (2017),Peak Gross Power Density,3.8,3.901415286418374,W/m2,0.026688233267993203,True,Literature benchmark,Spatially resolved matched-load power density

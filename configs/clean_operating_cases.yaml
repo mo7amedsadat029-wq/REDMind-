@@ -1,0 +1,44 @@
+# REDMind v2 Configuration: Clean Operating Conditions (Stage 1)
+# Model Version: REDMind-2D-Binary-v2.0 (repaired bottom-wall Neumann flux BC)
+# Primary Reference: Gurreri et al. (2017), Desalination, 423, 52-64
+# Sampling Strategy: Sobol quasi-random sequence + repaired baseline reference
+version: "2.0.0"
+scenario_group: "clean_operating_conditions"
+result_classification: "Numerically solved"
+random_seed: 2026
+n_new_cases: 90
+grid:
+  nx: 60
+  ny: 25
+
+fixed_parameters:
+  D_na_25C: 1.334e-9        # m^2/s, Robinson & Stokes
+  D_cl_25C: 2.032e-9        # m^2/s, Robinson & Stokes
+  rho: 997.0                # kg/m^3
+  mu_25C: 8.9e-4            # Pa*s
+  membrane_thickness_cem: 125.0e-6  # m
+  membrane_thickness_aem: 125.0e-6  # m
+  eta_pump: 0.75
+  temperature_dependent_properties: true
+  max_coupling_iter: 60
+  coupling_tol: 1.0e-4
+  relaxation: 0.3
+
+sampling_bounds:
+  c_conc_inlet_mol_m3: [250.0, 1500.0]     # 0.25 to 1.50 M NaCl
+  c_dil_inlet_mol_m3: [5.0, 50.0]          # 0.005 to 0.050 M NaCl
+  u_mean_conc_m_s: [0.003, 0.045]          # 0.3 to 4.5 cm/s (laminar)
+  u_mean_dil_m_s: [0.003, 0.045]           # 0.3 to 4.5 cm/s (laminar)
+  T_K: [288.15, 313.15]                    # 15 to 40 deg C
+  channel_height_m: [150.0e-6, 400.0e-6]   # 150 to 400 um
+  channel_length_m: [0.05, 0.15]           # 5 to 15 cm
+  X_fix_mag_mol_m3: [1500.0, 4000.0]       # membrane fixed charge magnitude
+  sigma_mem_S_m: [0.5, 2.0]                # membrane ionic conductivity
+  D_co_mem_m2_s: [0.5e-12, 3.0e-12]        # co-ion diffusivity in membrane
+  load_fractions: [0.0, 0.5]               # 0.0 = OCV, 0.5 = matched load
+
+verification_thresholds:
+  max_mass_balance_rel_err: 0.02
+  min_concentration_mol_m3: 0.0
+  require_converged: true
+  require_positive_gross_power: true

@@ -1,0 +1,5 @@
+scenario,nacl_mol_m3,ca_so4_mol_m3,ionic_strength_molal,water_activity,gamma_ca,gamma_so4,si_gypsum_pitzer,si_gypsum_davies,davies_validity_flag,result_classification
+Pure water gypsum equilibrium (~2.09 g/L),0.0,15.2,0.061017231436946734,0.999619027929913,0.33125463926328114,0.33125423547088706,-0.013222962082933679,0.21443067392908827,within_range_I<=0.5,Literature benchmark
+1.0m NaCl salting-in near-saturation,1000.0,38.0,1.1764641535429545,0.9652550992680803,0.19443933676677688,0.06903110732914432,-0.14506743994094115,1.0760466320652258,invalid_high_ionic_strength_I>0.5,Literature benchmark
+3.0m NaCl undersaturated due to ionic strength,3000.0,15.2,3.230919252184428,0.8858819731637834,0.379084954272621,0.02864820860496461,-1.0787448929072925,2.321681160900679,invalid_high_ionic_strength_I>0.5,Literature benchmark
+3.0m NaCl salting-in near-saturation (~3.6x solubility),3000.0,55.0,3.4044196559316156,0.8841648206117482,0.35569079195684344,0.027378810115062054,-0.009346639148488097,3.627764513801853,invalid_high_ionic_strength_I>0.5,Literature benchmark

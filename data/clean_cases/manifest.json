@@ -1,0 +1,8 @@
+{
+  "stage": "Stage 1 - Clean Operating Conditions",
+  "version": "2.0.0",
+  "sampling": "Sobol QMC (scramble=True, seed=2026)",
+  "num_target": 90,
+  "num_converged": 85,
+  "num_failed": 5
+}

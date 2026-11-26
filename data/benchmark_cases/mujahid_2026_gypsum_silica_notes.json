@@ -1,0 +1,60 @@
+{
+  "citation": "Mujahid et al. (2026), Separation and Purification Technology 390, 136960, DOI: 10.1016/j.seppur.2026.136960",
+  "result_classification": "Literature benchmark",
+  "accessibility_note": "Journal full text behind publisher paywall; abstract-verified scope covers gypsum and silica impurities on RED OCV, stack resistance, and power density across CEM/AEM.",
+  "scientific_policy": "No time-dependent kinetic constants or additive gypsum+silica growth laws are fabricated from abstract-level resistance/power observations.",
+  "compatible_thermodynamic_states": [
+    {
+      "scenario": "Pure water gypsum equilibrium (~2.09 g/L)",
+      "nacl_mol_m3": 0.0,
+      "ca_so4_mol_m3": 15.2,
+      "ionic_strength_molal": 0.061017231436946734,
+      "water_activity": 0.999619027929913,
+      "gamma_ca": 0.33125463926328114,
+      "gamma_so4": 0.33125423547088706,
+      "si_gypsum_pitzer": -0.013222962082933679,
+      "si_gypsum_davies": 0.21443067392908827,
+      "davies_validity_flag": "within_range_I<=0.5",
+      "result_classification": "Literature benchmark"
+    },
+    {
+      "scenario": "1.0m NaCl salting-in near-saturation",
+      "nacl_mol_m3": 1000.0,
+      "ca_so4_mol_m3": 38.0,
+      "ionic_strength_molal": 1.1764641535429545,
+      "water_activity": 0.9652550992680803,
+      "gamma_ca": 0.19443933676677688,
+      "gamma_so4": 0.06903110732914432,
+      "si_gypsum_pitzer": -0.14506743994094115,
+      "si_gypsum_davies": 1.0760466320652258,
+      "davies_validity_flag": "invalid_high_ionic_strength_I>0.5",
+      "result_classification": "Literature benchmark"
+    },
+    {
+      "scenario": "3.0m NaCl undersaturated due to ionic strength",
+      "nacl_mol_m3": 3000.0,
+      "ca_so4_mol_m3": 15.2,
+      "ionic_strength_molal": 3.230919252184428,
+      "water_activity": 0.8858819731637834,
+      "gamma_ca": 0.379084954272621,
+      "gamma_so4": 0.02864820860496461,
+      "si_gypsum_pitzer": -1.0787448929072925,
+      "si_gypsum_davies": 2.321681160900679,
+      "davies_validity_flag": "invalid_high_ionic_strength_I>0.5",
+      "result_classification": "Literature benchmark"
+    },
+    {
+      "scenario": "3.0m NaCl salting-in near-saturation (~3.6x solubility)",
+      "nacl_mol_m3": 3000.0,
+      "ca_so4_mol_m3": 55.0,
+      "ionic_strength_molal": 3.4044196559316156,
+      "water_activity": 0.8841648206117482,
+      "gamma_ca": 0.35569079195684344,
+      "gamma_so4": 0.027378810115062054,
+      "si_gypsum_pitzer": -0.009346639148488097,
+      "si_gypsum_davies": 3.627764513801853,
+      "davies_validity_flag": "invalid_high_ionic_strength_I>0.5",
+      "result_classification": "Literature benchmark"
+    }
+  ]
+}

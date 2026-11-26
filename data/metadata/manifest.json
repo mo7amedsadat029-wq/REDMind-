@@ -1,0 +1,35 @@
+{
+  "dataset_title": "NEURANUM v2.1.0 Expanded Multiphysics, Pitzer & PINN-Ready 8-Ion RED Corpus",
+  "version": "2.1.0",
+  "original_51_cases_preserved": "data/original_51_cases/ (untouched)",
+  "repaired_baseline_51_location": "data/repaired_baseline_51/",
+  "stage_directories": {
+    "stage1_clean": "data/clean_cases/",
+    "stage2_multicomponent": "data/multicomponent_brines/",
+    "stage3_scaling_risk": "data/scaling_risk/",
+    "stage4_mineral_scaling": "data/mineral_scaling/",
+    "benchmarks": "data/benchmark_cases/",
+    "stage2b_pinn_8ion_sobol": "data/pinn_8ion_sobol/"
+  },
+  "case_counts": {
+    "original_51_preserved": 51,
+    "repaired_baseline_51": 51,
+    "stage1_clean_operating_conditions": 85,
+    "stage2_multicomponent_brines": 41,
+    "stage3_calcite_saturation_risk": 18,
+    "stage3_gypsum_saturation_risk": 18,
+    "stage4_cnt_nucleation": 18,
+    "stage4_exploratory_delta_Rm": 8,
+    "total_new_cases": 463,
+    "total_failed_cases": 12,
+    "stage2b_pinn_8ion_sobol": 275,
+    "stage2b_pinn_8ion_failed": 45
+  },
+  "random_seeds": {
+    "baseline_lhs": 42,
+    "stage1_sobol": 2026,
+    "stage2_multicomponent": 2027,
+    "stage2b_pinn_8ion_sobol": 2028
+  },
+  "wall_time_total_s": 219.25
+}

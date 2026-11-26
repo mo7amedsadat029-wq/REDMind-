@@ -1,0 +1,817 @@
+## 1. Project Objective
+
+You are a scientific computing and membrane engineering research agent specializing in:
+
+- Reverse Electrodialysis (RED).
+- Computational fluid dynamics.
+- Electrochemical ion transport.
+- Ion-exchange membrane modeling.
+- Multicomponent electrolyte chemistry.
+- Mineral scaling and heterogeneous nucleation.
+- Numerical simulation and scientific data generation.
+
+Your task is to improve the existing numerical simulator and generate a substantially larger, physically meaningful simulation dataset.
+
+The project investigates how realistic desalination-brine compositions, operating conditions, and mineral scaling affect RED membrane performance and net energy recovery.
+
+The expanded dataset will later be used in a separate Physics-Informed Neural Network (PINN) development stage.
+
+**IMPORTANT: Do not implement, train, or optimize any PINN, neural network, or machine-learning model in this task.**
+
+Your responsibility is exclusively to:
+
+1. Inspect and improve the existing RED simulator.
+2. Verify the corrected numerical implementation.
+3. Extend the physical model where justified.
+4. Generate additional operating and chemical scenarios.
+5. Model mineral scaling using published scientific formulations.
+6. Generate and organize a reproducible dataset.
+7. Validate the numerical and physical results.
+
+Do not fabricate physical equations, material properties, fouling rates, or experimental observations.
+
+---
+
+# 2. Existing Project and Required Preservation
+
+The existing REDMind project contains 51 previous numerical simulation cases.
+
+A problem in the simulator has recently been corrected.
+
+Before making any modifications:
+
+1. Inspect the complete existing source code.
+2. Read the model specification and literature documentation.
+3. Inspect all 51 simulation cases.
+4. Identify the recent code correction.
+5. Verify that the correction is mathematically and physically justified.
+6. Execute the original verification tests.
+7. Compare the current outputs with the previous outputs, where available.
+
+If the correction changes the governing equations, boundary conditions, numerical solver, or physical results, regenerate all affected baseline cases.
+
+If it only changes data handling or file management without changing the physical calculations, preserve the original numerical outputs after verifying their integrity.
+
+Never overwrite or delete the original 51 cases.
+
+Use versioned configurations and separate folders for the original and newly generated datasets.
+
+Do not modify the reference model merely to obtain better-looking results.
+
+Any physical change must be justified by a published reference or a documented derivation.
+
+---
+
+# 3. Scientific Literature Review
+
+Before implementing additional physics, review the following publications.
+
+Read the actual papers or available full texts when possible. Verify equations, parameter values, assumptions, and experimental conditions rather than relying on titles or abstracts alone.
+
+## A. RED transport and multiphysics
+
+### Reference 1
+
+Gurreri et al. (2017).
+
+"Multi-physical modelling of reverse electrodialysis."
+
+Desalination, 423, 52–64.
+
+DOI: [https://doi.org/10.1016/j.desal.2017.09.006](https://doi.org/10.1016/j.desal.2017.09.006)
+
+Use this as the primary reference for:
+
+- Two-dimensional RED channel modeling.
+- Fluid mechanics.
+- Nernst–Planck ion transport.
+- Donnan membrane interfaces.
+- Local electroneutrality.
+- Membrane geometry.
+- Concentration distribution.
+- Electrical performance.
+
+### Reference 2
+
+Tedesco, Hamelers, and Biesheuvel (2016).
+
+"Nernst–Planck transport theory for (reverse) electrodialysis: I. Effect of co-ion transport through the membranes."
+
+Journal of Membrane Science, 510, 370–381.
+
+DOI: [https://doi.org/10.1016/j.memsci.2016.03.012](https://doi.org/10.1016/j.memsci.2016.03.012)
+
+Use this paper to improve the representation of:
+
+- Cation-exchange membranes.
+- Anion-exchange membranes.
+- Co-ion transport.
+- Membrane selectivity.
+- Ion transport coefficients.
+- Membrane fixed charge.
+
+### Reference 3
+
+Long et al. (2018).
+
+"Performance analysis of reverse electrodialysis stacks: Channel geometry and flow rate optimization."
+
+Energy, 158, 427–436.
+
+DOI: [https://doi.org/10.1016/j.energy.2018.06.067](https://doi.org/10.1016/j.energy.2018.06.067)
+
+Use this paper to guide the operating-condition design, hydraulic-loss calculations, and net-power calculations.
+
+Clearly identify its simplifying assumptions, especially regarding concentration polarization.
+
+## B. Realistic desalination-brine composition
+
+### Reference 4
+
+Sorour et al. (2015).
+
+"Schemes for salt recovery from seawater and RO brines using chemical precipitation."
+
+Desalination and Water Treatment.
+
+DOI: [https://doi.org/10.1080/19443994.2014.946720](https://doi.org/10.1080/19443994.2014.946720)
+
+This reference is especially relevant because it investigates RO-brine chemistry from Mediterranean and Red Sea coastal locations in Egypt.
+
+Extract the published compositions and use them as documented reference scenarios.
+
+Do not invent additional Egyptian plant compositions.
+
+If a composition is incomplete, identify the missing species instead of silently assuming their concentrations.
+
+### Reference 5
+
+"Total Resource Circulation of Desalination Brine: A Review" (2024).
+
+DOI: [https://doi.org/10.1002/adsu.202300460](https://doi.org/10.1002/adsu.202300460)
+
+Use this review to investigate the variability of desalination-brine chemistry across different plants and regions.
+
+## C. RED-specific mineral scaling and fouling
+
+### Reference 6
+
+Vermaas et al. (2013).
+
+"Fouling in reverse electrodialysis under natural conditions."
+
+Water Research, 47(3), 1289–1298.
+
+DOI: [https://doi.org/10.1016/j.watres.2012.11.053](https://doi.org/10.1016/j.watres.2012.11.053)
+
+Use this paper to understand the different mechanisms observed during RED operation.
+
+It identifies mineral, organic, and particulate-related fouling, but this project must not attempt to model all mechanisms simultaneously.
+
+### Reference 7 — Primary mineral-scaling reference
+
+Santoro et al. (2021).
+
+"Fouling propensity in reverse electrodialysis operated with hypersaline brine."
+
+Energy, 228, 120563.
+
+DOI: [https://doi.org/10.1016/j.energy.2021.120563](https://doi.org/10.1016/j.energy.2021.120563)
+
+Full text:
+
+[https://orbit.dtu.dk/files/244762017/1_s2.0_S0360544221008124_main_1\_.pdf](https://orbit.dtu.dk/files/244762017/1_s2.0_S0360544221008124_main_1_.pdf)
+
+This is the primary reference for the mineral-scaling extension.
+
+Investigate its:
+
+- Classical Nucleation Theory formulation.
+- Heterogeneous nucleation model.
+- Calcium carbonate precipitation experiments.
+- Membrane contact angle.
+- Surface charge density.
+- Surface permittivity.
+- Surface roughness.
+- Differences between CEM and AEM behavior.
+
+Implement the published heterogeneous-nucleation formulation only to the extent that its mathematical equations and required parameters can be reproduced.
+
+Do not confuse the calculation of a nucleation-energy barrier with a complete time-dependent crystal-growth model.
+
+The paper also reports organic and colloidal fouling observations. Those observations are useful background evidence, but do not implement additional organic or colloidal models simply by inventing equations.
+
+### Reference 8 — Gypsum and silica in RED
+
+Mujahid et al. (2026).
+
+"Investigation of the effect of gypsum and silica impurity in saline feed water on the RED performance."
+
+Separation and Purification Technology, 390, 136960.
+
+DOI:
+
+[https://doi.org/10.1016/j.seppur.2026.136960](https://doi.org/10.1016/j.seppur.2026.136960)
+
+Use this study as an experimental reference for the effects of gypsum and silica impurities on RED performance.
+
+Investigate:
+
+- Gypsum scaling.
+- Silica-related surface deposition.
+- Individual and combined effects.
+- Changes in open-circuit voltage.
+- Changes in stack resistance.
+- Changes in power density.
+- Differences between CEM and AEM behavior.
+
+Attempt to reproduce compatible published reference conditions where sufficient experimental information is available.
+
+Do not invent deposition kinetics or growth rates from reported electrical-performance changes.
+
+Use the results as benchmark conditions, not as a source of unsupported dynamic growth equations.
+
+## D. High-ionic-strength aqueous chemistry
+
+### Reference 9
+
+Parkhurst and Appelo (2013).
+
+"Description of Input and Examples for PHREEQC Version 3."
+
+USGS Techniques and Methods, book 6, chapter A43.
+
+DOI:
+
+[https://doi.org/10.3133/tm6A43](https://doi.org/10.3133/tm6A43)
+
+Use PHREEQC for documented aqueous speciation and mineral-saturation calculations where appropriate.
+
+### Reference 10
+
+Plummer et al. (1988).
+
+"A computer program incorporating Pitzer's equations for calculation of geochemical reactions in brines."
+
+USGS Water-Resources Investigations Report 88-4153.
+
+[https://doi.org/10.3133/wri884153](https://doi.org/10.3133/wri884153)
+
+Use this as a reference for high-ionic-strength activity calculations.
+
+Investigate Pitzer-based models or another suitable electrolyte activity formulation for concentrated desalination brines.
+
+Do not assume the Davies equation remains accurate at hypersaline conditions.
+
+---
+
+# 4. Scope of Fouling Modeling
+
+This project must focus on **MINERAL SCALING ONLY**.
+
+Do not develop independent organic-fouling, colloidal-fouling, biological-fouling, or combined-fouling modules.
+
+Do not add these mechanisms merely to increase the dataset size.
+
+They may be mentioned in the literature review and future-work section.
+
+An additional mechanism may only be considered if you identify a directly relevant published mathematical model containing sufficiently specified equations, parameters, and validation evidence that can be transferred to this RED system.
+
+If such evidence is not available, exclude the mechanism from implementation.
+
+The principal mineral-scaling mechanisms are:
+
+1. Calcium carbonate (CaCO3).
+2. Gypsum (CaSO4·2H2O).
+
+Silica may be studied as a separate published-performance benchmark if the experimental conditions can be reproduced, but do not automatically create an independent silica deposition-kinetics model.
+
+Prioritize CaCO3 because Santoro et al. (2021) provide a RED-specific heterogeneous-nucleation model.
+
+Treat gypsum as a second mineral of interest, using the 2026 RED study as a performance benchmark.
+
+---
+
+# 5. Stage One: Expand Clean RED Operating Conditions
+
+Generate at least 80–100 additional clean-membrane operating cases.
+
+These cases must use actual new parameter combinations and successful numerical simulations.
+
+Vary the parameters supported by the existing model, such as:
+
+- Concentrated-stream inlet concentration.
+- Dilute-stream inlet concentration.
+- Concentrated-stream flow velocity.
+- Dilute-stream flow velocity.
+- Temperature.
+- Channel dimensions.
+- Membrane resistance.
+- Membrane permselectivity.
+- Membrane transport parameters.
+- Other physically relevant model inputs.
+
+Use LHS, Sobol sampling, or another defensible design-of-experiments strategy.
+
+Avoid duplicated cases.
+
+Cover the validated operating domain rather than introducing arbitrary extreme values.
+
+Calculate the supported outputs:
+
+- Velocity fields.
+- Pressure fields.
+- Ion concentrations.
+- Electric potential.
+- Ion fluxes.
+- Membrane-interface concentrations.
+- Pressure drop.
+- Open-circuit voltage.
+- Internal resistance.
+- Gross power.
+- Pumping power.
+- Net power.
+
+Calculate electrical outputs only where the original RED model supports them and their validity has been established.
+
+The clean-membrane cases will form the main reference group for subsequent scaling comparisons.
+
+---
+
+# 6. Stage Two: Add Multicomponent Desalination-Brine Scenarios
+
+The current NaCl-only model must not be treated as a complete representation of real desalination brine.
+
+Investigate an extension to a multicomponent electrolyte system.
+
+Prioritize ions appearing in documented RO-brine compositions:
+
+- Na+.
+- Cl-.
+- Mg2+.
+- Ca2+.
+- SO4(2-).
+- K+.
+- HCO3-.
+- CO3(2-), where appropriate.
+
+Start with the Mediterranean and Red Sea reference compositions reported by Sorour et al. (2015).
+
+Use at least two documented brine profiles when the necessary analytical data are available.
+
+For each profile:
+
+1. Extract the reported concentrations and units.
+2. Verify the completeness of its ionic composition.
+3. Check electroneutrality.
+4. Document missing analytical species.
+5. Record the source of every concentration.
+6. Check whether the membrane transport equations support each species.
+7. Identify the activity-coefficient model used.
+
+Do not automatically convert an incomplete brine profile into a fully specified electrolyte system by inventing missing concentrations.
+
+Do not independently append new ions to the original Nernst–Planck model without checking the electrochemical closure and membrane selectivity relations.
+
+If a proper multicomponent transport formulation is not yet available:
+
+- Keep the verified NaCl RED solver operational.
+- Implement and verify the required multicomponent extension separately.
+- Do not label unsupported outputs as realistic multicomponent RED simulations.
+
+Target at least 40–60 additional multicomponent cases after the extended solver passes its verification tests.
+
+---
+
+# 7. Stage Three: Generate Mineral Saturation-Risk Cases
+
+Generate approximately 30–40 additional cases specifically designed to study mineral-scaling potential.
+
+Focus on CaCO3 and gypsum.
+
+For CaCO3, the chemical system must correctly represent the carbonate equilibrium.
+
+Required inputs may include:
+
+- Calcium concentration.
+- Alkalinity.
+- Dissolved inorganic carbon.
+- pH.
+- Temperature.
+- Ionic strength.
+- Relevant activity coefficients.
+
+For gypsum, represent the chemical equilibrium using the appropriate calcium and sulfate activities.
+
+Calculate:
+
+Omega = IAP / Ksp
+
+SI = log10(Omega)
+
+where Omega is the saturation ratio, IAP is the ion activity product, and Ksp is the applicable equilibrium constant.
+
+Use a suitable activity model for the ionic-strength domain.
+
+Where appropriate, use a Pitzer-based formulation or another documented high-salinity model.
+
+Produce clearly separated conditions:
+
+1. Undersaturated.
+2. Near equilibrium saturation.
+3. Supersaturated.
+
+Do not interpret supersaturation as proof of actual deposition.
+
+Store the calculated SI, activities, equilibrium assumptions, chemical database, and model-validity information for each case.
+
+Do not create a spatial scaling map unless the required local species concentrations are physically resolved or otherwise obtained through a defensible coupling method.
+
+If geochemical calculations are performed as post-processing, clearly label this as one-way coupling.
+
+---
+
+# 8. Stage Four: Mineral Nucleation and Fouling Conditions
+
+Extend the model toward actual mineral deposition, beginning with CaCO3.
+
+Use Santoro et al. (2021) as the primary reference.
+
+Reproduce its heterogeneous-nucleation formulation to the extent that all required equations and membrane parameters are available.
+
+Investigate the relationship between nucleation propensity and:
+
+- Membrane contact angle.
+- Membrane surface charge.
+- Permittivity.
+- Surface roughness.
+- Local supersaturation.
+- Relevant temperature and chemical conditions.
+
+Calculate nucleation-related quantities only where supported by the selected model.
+
+Do not automatically describe a supersaturated case as an actual fouled case.
+
+Distinguish:
+
+A. Clean membrane:
+No deposited mineral is assumed.
+
+B. Scaling-risk condition:
+The chemical solution is near or above saturation, but actual deposition is not established.
+
+C. Nucleation-prone condition:
+The heterogeneous-nucleation model predicts favorable nucleation conditions under its documented assumptions.
+
+D. Confirmed or modeled deposition:
+Only use this category if a physically specified deposition or crystal-growth law and its parameters are available.
+
+### Critical requirement for time-dependent fouling
+
+Investigate whether a suitable RED-specific mineral-deposition growth model exists in the cited literature or can be defensibly derived from validated experimental data.
+
+If a complete, parameterized growth model is available:
+
+- Implement its governing equations.
+- Document its calibration data.
+- Calculate deposition evolution over time.
+- Update the membrane properties consistently.
+- Recalculate the affected transport and performance fields.
+
+If no sufficiently supported growth law is available:
+
+- Do not invent deposition-rate coefficients.
+- Do not fabricate deposit thickness versus operating time.
+- Do not claim to simulate real long-term fouling.
+- Keep the output at the level of mineral saturation and nucleation propensity.
+- Optionally run separately labeled fixed-state sensitivity scenarios to examine how assumed deposit resistance would affect performance.
+
+Such sensitivity scenarios must be marked as hypothetical rather than physically validated fouling trajectories.
+
+Target approximately 20–30 mineral-scaling-related cases, depending on the capabilities of the verified model.
+
+---
+
+# 9. Optional Gypsum and Silica Benchmark Scenarios
+
+Investigate the Mujahid et al. (2026) study.
+
+Reproduce selected published experimental conditions where sufficient data are available.
+
+For gypsum:
+
+- Represent the reported feed chemistry.
+- Calculate relevant sulfate and calcium behavior where supported.
+- Compare predicted RED performance with the published experimental performance.
+- Examine changes in resistance and power density.
+
+For silica:
+
+- Reproduce reported benchmark conditions if the relevant model inputs and measurements are available.
+- Distinguish the amorphous silica deposition mechanism from crystalline gypsum scaling.
+
+For combined gypsum and silica:
+
+- Reproduce the published combined-effects scenario if supported.
+- Do not assume that their effects are additive.
+- Do not create interaction parameters without evidence.
+
+These cases are benchmark and validation scenarios unless an independently justified kinetic model is available.
+
+The 2026 publication reports experimental performance changes, but those changes alone do not establish a complete time-dependent deposition-growth law.
+
+Do not extrapolate unsupported deposition rates from the reported OCV or power-density reductions.
+
+---
+
+# 10. Design of the Expanded Dataset
+
+The initial target is approximately 200 additional unique simulation cases beyond the original 51.
+
+A suggested allocation is:
+
+| Case Group                                   |  Target New Cases |
+| -------------------------------------------- | ----------------: |
+| Clean operating conditions                   |            80–100 |
+| Multicomponent brine conditions              |             40–60 |
+| CaCO3 and gypsum saturation-risk cases       |             30–40 |
+| Mineral nucleation / fouling benchmark cases |             20–30 |
+| Total target                                 | Approximately 200 |
+
+These are planning targets, not mandatory quotas.
+
+Do not generate scientifically unsupported cases merely to reach a target number.
+
+If a physical model is unavailable, report the limitation and reduce the implemented case count rather than fabricate results.
+
+Use a fixed random seed and documented sampling specifications.
+
+Each new case must have a unique identifier.
+
+Where a case contains multiple time snapshots, maintain:
+
+- A parent trajectory ID.
+- A snapshot ID.
+- The actual simulation time.
+- The associated physical state.
+
+Do not count time snapshots as independent operating conditions.
+
+---
+
+# 11. Required Data Fields
+
+Every simulation case should have structured metadata.
+
+## Input parameters
+
+- Case ID.
+- Scenario category.
+- Brine profile identifier.
+- Dilute-stream composition.
+- Concentrated-stream composition.
+- Flow rates.
+- Velocity setpoints.
+- Temperature.
+- Channel geometry.
+- Membrane parameters.
+- Mineral phase, if applicable.
+- Chemical parameters.
+- Model version.
+- Configuration version.
+- Time, if a transient model is used.
+
+## Spatial outputs
+
+Save the physical fields that are actually resolved:
+
+- x and y coordinates.
+- Region identifier.
+- Velocity components u and v.
+- Pressure.
+- Individual ion concentrations.
+- Electric potential.
+- Individual species fluxes.
+- Membrane-interface concentrations and fluxes.
+- Local chemical activity information where available.
+- Local mineral saturation index where calculated.
+- Deposit thickness and mass only if an actual deposition model is implemented.
+
+Do not invent fields for variables that are not solved by the simulator.
+
+## Global outputs
+
+Where supported:
+
+- Open-circuit voltage.
+- Internal resistance.
+- Current.
+- Gross power density.
+- Pressure drop.
+- Pumping power.
+- Net power density.
+- Performance reduction relative to the corresponding clean reference.
+
+## Scaling metadata
+
+- Mineral identity.
+- Saturation index.
+- Saturation model.
+- Activity model.
+- Ksp source.
+- Temperature.
+- Membrane type.
+- Nucleation model identifier, if applicable.
+- Deposition-model validity status.
+
+Clearly label every result as one of:
+
+- Numerically solved.
+- Thermodynamic post-processing.
+- Literature benchmark.
+- Calibrated model prediction.
+- Exploratory sensitivity scenario.
+
+---
+
+# 12. Verification and Validation Requirements
+
+Every new simulation must pass the relevant numerical checks.
+
+Implement automated checks for:
+
+1. Mass conservation.
+2. Charge conservation or electroneutrality.
+3. Positivity of concentrations.
+4. Correct inlet and outlet boundary conditions.
+5. Correct membrane-interface fluxes.
+6. Numerical solver convergence.
+7. Pressure-flow consistency.
+8. Electrical energy accounting.
+9. Mesh refinement sensitivity.
+10. Chemical equilibrium consistency where applicable.
+
+Recheck the corrected baseline before generating all additional cases.
+
+Use suitable benchmark cases from the literature.
+
+For multicomponent brines, verify chemical charge balance and the applicability of the activity model.
+
+For mineral nucleation, compare the implemented formulation against the relevant published nucleation results.
+
+For any actual time-dependent growth model, require independent experimental comparison before presenting its outputs as validated growth predictions.
+
+Preserve failed runs in a separate log and explain the cause of failure.
+
+Never mix unsuccessful numerical solutions with valid training data.
+
+---
+
+# 13. Software and Data Organization
+
+Retain the existing source structure where practical.
+
+Use a modular organization similar to:
+
+REDMind/
+simulator/
+configs/
+clean_operating_cases.yaml
+brine_profiles.yaml
+multicomponent_transport.yaml
+calcite_scaling.yaml
+gypsum_scaling.yaml
+data/
+original_51_cases/
+clean_cases/
+multicomponent_brines/
+scaling_risk/
+mineral_scaling/
+benchmark_cases/
+metadata/
+tests/
+results/
+figures/
+tables/
+validation/
+logs/
+reports/
+literature_review\.md
+model_specification.md
+parameter_provenance.csv
+simulation_summary.csv
+validation_report.md
+limitations.md
+
+Use CSV or Parquet for global case-level metadata.
+
+Use NPZ, HDF5, or NetCDF for spatial fields.
+
+Each case must be reproducible from its saved configuration.
+
+Preserve the original files and create a new dataset version.
+
+---
+
+# 14. Required Figures
+
+Generate scientific plots from actual simulation results:
+
+1. Clean RED geometry.
+2. Velocity fields under different flow rates.
+3. Pressure distributions.
+4. Na+ and Cl- concentration fields.
+5. Multicomponent ion concentration fields where supported.
+6. Membrane-interface concentration profiles.
+7. Electric potential distributions.
+8. Net power versus operating conditions.
+9. Comparison of Mediterranean and Red Sea brine profiles.
+10. Calcite saturation-risk maps.
+11. Gypsum saturation-risk comparisons.
+12. Heterogeneous nucleation results where implemented.
+13. Mineral-scaling benchmark comparisons.
+14. Performance changes relative to clean reference cases.
+15. Mesh-convergence and verification plots.
+
+Every figure must include:
+
+- Units.
+- Case ID.
+- Operating conditions.
+- Model version.
+- A clear identification of whether it is a numerical result, benchmark, or sensitivity scenario.
+
+Do not present illustrative or assumed plots as simulation results.
+
+---
+
+# 15. Final Deliverables
+
+The completed project must include:
+
+1. A corrected and verified RED simulator.
+2. All original 51 baseline cases preserved.
+3. Approximately 200 additional unique cases, subject to physical-model availability and successful validation.
+4. New clean operating-condition cases.
+5. Multicomponent brine scenarios where supported.
+6. Calcite and gypsum saturation-risk cases.
+7. A RED-specific mineral-nucleation implementation based on published equations where possible.
+8. Gypsum and silica benchmark cases based on published RED experiments where reproducible.
+9. Spatial fields and global output metadata.
+10. Failed-case logs.
+11. Parameter provenance records.
+12. A literature review.
+13. A model and equations specification.
+14. A numerical verification report.
+15. A scientific limitations report.
+16. Reproducible execution instructions.
+
+Include a final table reporting actual case counts:
+
+| Scenario Group                 | Existing Cases | New Cases | Converged Cases | Failed Cases |
+| ------------------------------ | -------------: | --------: | --------------: | -----------: |
+| Clean operating conditions     |              — |         — |               — |            — |
+| Multicomponent brine           |              — |         — |               — |            — |
+| Calcite saturation risk        |              — |         — |               — |            — |
+| Gypsum saturation risk         |              — |         — |               — |            — |
+| Mineral nucleation / benchmark |              — |         — |               — |            — |
+
+Populate this table only with actual executed results.
+
+---
+
+# 16. Final Scientific Restrictions
+
+The following distinctions are mandatory:
+
+- Supersaturation is not actual mineral deposition.
+- Nucleation propensity is not a validated deposition-growth trajectory.
+- Deposit thickness must not be invented.
+- A change in electrical power does not identify the fouling mechanism by itself.
+- A fixed resistance increase is a sensitivity assumption, not automatically a physical fouling model.
+- Multicomponent brine transport requires appropriate species transport and electrochemical closure.
+- Davies activity corrections must not be assumed reliable for all hypersaline compositions.
+- Literature benchmark values must not be presented as outputs from your own simulation.
+- Organic and colloidal fouling are outside the current implementation scope unless an independently verified, directly transferable published model is found.
+
+If a directly relevant publication provides a complete reusable model for an additional mechanism, describe it in a short optional literature note. Do not implement it unless its applicability and required parameters are demonstrated.
+
+---
+
+# FINAL EXECUTION INSTRUCTION
+
+Work incrementally.
+
+First verify the repaired 51-case simulator.
+
+Then expand the clean operating-condition model.
+
+Next implement realistic multicomponent brine chemistry where the governing equations and transport parameters are available.
+
+After that, implement mineral saturation calculations and the published RED-specific heterogeneous-nucleation model.
+
+Use gypsum and silica primarily as published experimental benchmark conditions unless a validated deposition-growth model can be established.
+
+Prioritize scientific reproducibility, accurate physical equations, literature-based parameters, and clear labels for model limitations.
+
+**The final objective is a larger, diverse, physically defensible RED simulation dataset covering clean operation, realistic desalination-brine chemistry, and mineral-scaling risk. Do not train a PINN in this task.**

@@ -1,0 +1,18 @@
+{
+  "stage": "Stage 2 - Multicomponent Desalination-Brine Scenarios",
+  "version": "2.0.0",
+  "profiles_included": [
+    "mediterranean_el_remel_feed",
+    "mediterranean_el_remel_brine",
+    "shammas_brackish_ro_brine",
+    "mediterranean_swro_feed_pmc9694509",
+    "red_sea_swro_feed_egypt",
+    "red_sea_swro_brine_egypt"
+  ],
+  "profiles_excluded_incomplete": [
+    "hypersaline_swro_santoro_2024_ic"
+  ],
+  "num_target": 48,
+  "num_converged": 41,
+  "num_failed": 7
+}

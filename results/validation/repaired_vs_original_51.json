@@ -1,0 +1,16 @@
+{
+  "n_compared": 51,
+  "max_abs_diff_ocv_mV": 0.5432583644777367,
+  "mean_abs_diff_ocv_mV": 0.17359003664900982,
+  "max_abs_diff_P_gross_W_m2": 1.1507392113939057,
+  "orig_max_mb_dil": 0.0339584043361159,
+  "repaired_max_mb_dil": 0.0010274932227777817,
+  "orig_max_mb_conc": 0.001107964282364,
+  "repaired_max_mb_conc": 5.870678187540385e-05,
+  "baseline_case_000": {
+    "orig_ocv_mV": 155.4030391808955,
+    "repaired_ocv_mV": 155.20107987197304,
+    "orig_P_gross_W_m2": 3.897258499352072,
+    "repaired_P_gross_W_m2": 3.9015032258634075
+  }
+}

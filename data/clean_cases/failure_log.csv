@@ -1,0 +1,6 @@
+case_id,scenario_group,reason,error_detail
+clean_sobol_024,clean_operating_conditions,Failed convergence or physical conservation check,"conv=True, mb_c=1.416e-03, mb_d=2.451e-02, min_c=4.717e+01"
+clean_sobol_040,clean_operating_conditions,Failed convergence or physical conservation check,"conv=True, mb_c=6.625e-04, mb_d=2.095e-02, min_c=4.411e+01"
+clean_sobol_048,clean_operating_conditions,Failed convergence or physical conservation check,"conv=True, mb_c=9.195e-04, mb_d=3.360e-02, min_c=3.247e+01"
+clean_sobol_058,clean_operating_conditions,Failed convergence or physical conservation check,"conv=True, mb_c=3.095e-04, mb_d=3.596e-02, min_c=4.210e+01"
+clean_sobol_078,clean_operating_conditions,Failed convergence or physical conservation check,"conv=True, mb_c=1.740e-03, mb_d=2.362e-02, min_c=4.548e+01"

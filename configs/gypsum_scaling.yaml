@@ -1,0 +1,26 @@
+# REDMind v2 Configuration: Gypsum (CaSO4*2H2O) Saturation-Risk & Impurity Benchmark (Stages 3 & 4)
+# References:
+#   - Plummer et al. (1988), USGS WRI 88-4153; PHREEQC pitzer.dat (CaSO4:2H2O)
+#   - Mujahid et al. (2026), Sep. Purif. Technol. 390, 136960 (RED gypsum/silica impurity study - benchmark reference)
+version: "2.0.0"
+mineral: "Gypsum"
+formula: "CaSO4:2H2O"
+activity_model: "Pitzer (Harvie-Moller-Weare / USGS pitzer.dat + osmotic water activity a_w^2)"
+ksp_source: "USGS pitzer.dat (log_K(25C) = -4.58 / Appelo 2015 analytical)"
+molar_volume_cm3_mol: 73.9    # USGS pitzer.dat line 333
+
+cnt_parameters:
+  gamma_sl_baseline_J_m2: 0.037   # He et al. (1994) / Nielsen gypsum interfacial energy
+  gamma_sl_sensitivity_range_J_m2: [0.025, 0.045]
+  contact_angle_sensitivity_range_deg: [35.0, 95.0]
+  wenzel_roughness_range: [1.0, 1.8]
+
+saturation_regimes:
+  undersaturated_max_SI: -0.1
+  near_equilibrium_SI_band: [-0.1, 0.1]
+  supersaturated_min_SI: 0.1
+
+mujahid_2026_benchmark_notes:
+  citation: "Mujahid et al. (2026), Sep. Purif. Technol., 390, 136960"
+  status: "Abstract-verified benchmark only; full experimental time-series tables behind publisher paywall."
+  policy: "Evaluate thermodynamic saturation regimes & parametric fixed-resistance sensitivity (Delta R_m) clearly labeled as Exploratory sensitivity scenario; never fabricate kinetic growth rates."

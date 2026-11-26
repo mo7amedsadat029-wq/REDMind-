@@ -1,0 +1,8 @@
+{
+  "stage": "Stage 4 - Mineral Nucleation & Exploratory Sensitivity",
+  "version": "2.0.0",
+  "num_cnt_cases": 18,
+  "num_exploratory_sensitivity_cases": 8,
+  "total_cases": 26,
+  "scientific_disclaimer": "CNT predicts thermodynamic critical barriers only; Delta_R_m cases are labeled Exploratory sensitivity scenarios, not validated fouling kinetics."
+}

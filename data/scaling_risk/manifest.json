@@ -1,0 +1,8 @@
+{
+  "stage": "Stage 3 - Mineral Saturation-Risk Cases",
+  "version": "2.0.0",
+  "num_calcite": 18,
+  "num_gypsum": 18,
+  "total_cases": 36,
+  "coupling_note": "One-way coupled thermodynamic post-processing; supersaturation != actual crystal deposition."
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "test_id": 1,
+    "name": "Analytical Flow Benchmark",
+    "passed": true,
+    "summary": "Flow benchmark passed=True: inlet Q err=4.00e-04, u_max err=1.16e-16, no-slip wall u=0.00e+00"
+  },
+  {
+    "test_id": 2,
+    "name": "Species Mass Conservation",
+    "passed": true,
+    "summary": "Mass balance passed=True: Conc rel err=1.012e-05, Dil rel err=2.977e-04 (criterion < 2%)"
+  },
+  {
+    "test_id": 3,
+    "name": "Inlet/Outlet Boundary Conditions",
+    "passed": true,
+    "summary": "BC test passed=True: inlet errs=(0.0e+00, 0.0e+00), outlet grad errs=(0.00e+00, 0.00e+00)"
+  },
+  {
+    "test_id": 4,
+    "name": "Membrane Interface Flux Consistency",
+    "passed": true,
+    "summary": "Membrane flux consistency passed=True: J_CEM=1.714e-06, J_AEM=1.714e-06 mol/(m2*s)"
+  },
+  {
+    "test_id": 5,
+    "name": "Charge Balance / Electroneutrality",
+    "passed": true,
+    "summary": "Electroneutrality passed=True: residual charge density = 0.0 mol/m3"
+  },
+  {
+    "test_id": 6,
+    "name": "Positive Physical Concentrations",
+    "passed": true,
+    "summary": "Positivity passed=True: min conc = 499.81 mol/m3, min dil = 17.00 mol/m3"
+  },
+  {
+    "test_id": 7,
+    "name": "Dimensional and Unit Consistency",
+    "passed": true,
+    "summary": "Unit consistency passed=True: V_thermal=0.02569 V, D_eff=1.611e-09 m2/s"
+  },
+  {
+    "test_id": 8,
+    "name": "Limiting Case (Zero Salinity Gradient)",
+    "passed": true,
+    "summary": "Zero-gradient limit passed=True: E_ocv = 0.000e+00 V (expected 0.0 V)"
+  },
+  {
+    "test_id": 9,
+    "name": "Mesh Refinement Convergence (3 Grids)",
+    "passed": true,
+    "summary": "Mesh convergence passed=True: OCV change=0.003%, Power change=0.002% (target < 2%)"
+  },
+  {
+    "test_id": 10,
+    "name": "Operational Parameter Space Stability",
+    "passed": true,
+    "summary": "Stability across parameter variations passed=True (6 cases evaluated)"
+  }
+]

@@ -1,0 +1,29 @@
+{
+  "bug_identified": "Incorrect Neumann flux boundary sign at bottom wall (j=0) in solve_advection_diffusion_2d: previously wrote -D*(c1-c0)/dy = J => c0-c1 = J*dy/D was inverted in conc channel vs dil channel, causing bottom CEM wall in conc channel to enrich (500.1345 mol/m3) rather than deplete, masking concentration polarization.",
+  "original_case_000_40x15": {
+    "c_conc_outlet_cem_j0": 500.13445863446793,
+    "c_conc_outlet_aem_j_top": 499.8656757066059,
+    "c_dil_outlet_aem_j0": 16.865675706605124,
+    "c_dil_outlet_cem_j_top": 17.134458634465595
+  },
+  "repaired_40x15": {
+    "c_conc_outlet_cem_j0": 499.8087466521814,
+    "c_conc_outlet_aem_j_top": 499.8087466521798,
+    "c_dil_outlet_aem_j0": 17.191253347821142,
+    "c_dil_outlet_cem_j_top": 17.191253347821092,
+    "ocv_V": 0.15520107987197307,
+    "R_internal_Ohm_m2": 0.0015434675943460227,
+    "P_gross_max_W_m2": 3.9015032258634075,
+    "mass_bal_rel_err_conc": 1.145399142897968e-05,
+    "mass_bal_rel_err_dil": 0.0003368821007793366
+  },
+  "repaired_60x25": {
+    "c_conc_outlet_cem_j0": 499.8087292459893,
+    "c_conc_outlet_aem_j_top": 499.8087292459889,
+    "ocv_V": 0.1552064329330406,
+    "R_internal_Ohm_m2": 0.001543608860844506,
+    "P_gross_max_W_m2": 3.9014152864183727,
+    "mass_bal_rel_err_conc": 9.24818823438575e-06,
+    "mass_bal_rel_err_dil": 0.00027200553642717495
+  }
+}

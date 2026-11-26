@@ -1,0 +1,169 @@
+# REDMind v2 Configuration: Documented Desalination-Brine Profiles
+# Every concentration comes strictly from open-access published analytical data.
+# Missing analytical values are explicitly marked null and never fabricated.
+version: "2.0.0"
+
+molecular_weights_g_mol:
+  Na: 22.989769
+  K: 39.0983
+  Mg: 24.305
+  Ca: 40.078
+  Cl: 35.453
+  SO4: 96.0626
+  HCO3: 61.0168
+  CO3: 60.0089
+
+ion_charges:
+  Na: 1
+  K: 1
+  Mg: 2
+  Ca: 2
+  Cl: -1
+  SO4: -2
+  HCO3: -1
+  CO3: -2
+
+profiles:
+  mediterranean_el_remel_feed:
+    title: "Mediterranean Seawater Feed — El-Remel SWRO Plant (Egypt)"
+    source_citation: "Abdel-Aal et al. (2021), Membranes 11(3), 212 [PMC8002872], Table 1"
+    region: "Mediterranean Sea (Egypt)"
+    stream_type: "SWRO feed"
+    pH: 8.0
+    temperature_C: 25.0
+    tds_reported_mg_L: 39831.1
+    completeness: "complete_8_major_ions"
+    missing_species: []
+    concentrations_mg_L:
+      Na: 13000.0
+      K: 430.0
+      Mg: 860.0
+      Ca: 450.0
+      Cl: 22800.0
+      SO4: 2200.0
+      HCO3: 134.2
+      CO3: 24.0
+
+  mediterranean_el_remel_brine:
+    title: "Mediterranean RO Reject Brine — El-Remel SWRO Plant (Egypt)"
+    source_citation: "Abdel-Aal et al. (2021), Membranes 11(3), 212 [PMC8002872], Table 1"
+    region: "Mediterranean Sea (Egypt)"
+    stream_type: "SWRO reject brine"
+    pH: 8.1
+    temperature_C: 25.0
+    tds_reported_mg_L: 57097.2
+    completeness: "complete_8_major_ions"
+    missing_species: []
+    concentrations_mg_L:
+      Na: 18400.0
+      K: 560.0
+      Mg: 1919.7
+      Ca: 560.0
+      Cl: 32039.0
+      SO4: 3500.0
+      HCO3: 176.9
+      CO3: 30.0
+
+  shammas_brackish_ro_brine:
+    title: "Brackish Groundwater RO Reject Brine — Shammas Plant (Egypt)"
+    source_citation: "Abdel-Aal et al. (2021), Membranes 11(3), 212 [PMC8002872], Table 2"
+    region: "Egypt Brackish Groundwater"
+    stream_type: "BWRO reject brine"
+    pH: 8.0
+    temperature_C: 25.0
+    tds_reported_mg_L: 15115.9
+    completeness: "complete_8_major_ions"
+    missing_species: []
+    concentrations_mg_L:
+      Na: 4600.0
+      K: 110.0
+      Mg: 583.2
+      Ca: 320.0
+      Cl: 7492.2
+      SO4: 1837.0
+      HCO3: 311.1
+      CO3: 18.0
+
+  mediterranean_swro_feed_pmc9694509:
+    title: "Mediterranean Seawater — SWRO-PRO Study"
+    source_citation: "Membranes 12(11), 1045 (2022) [PMC9694509], Table 2"
+    region: "Mediterranean Sea"
+    stream_type: "SWRO feed"
+    pH: 8.1
+    temperature_C: 28.0
+    tds_reported_mg_L: 40635.0
+    completeness: "complete_8_major_ions_plus_trace"
+    missing_species: []
+    notes: "Study also reports F- (1.39 mg/L), SiO2 (1.61 mg/L), B (5.03 mg/L); 50% recovery concentrate corresponds to ~2x factor."
+    concentrations_mg_L:
+      Na: 12310.05
+      K: 485.34
+      Mg: 1571.05
+      Ca: 487.36
+      Cl: 22398.76
+      SO4: 3157.78
+      HCO3: 160.57
+      CO3: 32.24
+
+  red_sea_swro_feed_egypt:
+    title: "Red Sea Seawater Feed — Egyptian Coastal Desalination Audit"
+    source_citation: "TDA Egypt Environmental Audit of Desalination Plants (tda.gov.eg)"
+    region: "Red Sea (Egypt)"
+    stream_type: "SWRO feed"
+    pH: 8.1
+    temperature_C: 25.0
+    tds_reported_mg_L: 40498.0
+    completeness: "missing_explicit_CO3"
+    missing_species: ["CO3"]
+    notes: "CO3(2-) derived strictly from measured pH and HCO3- thermodynamic equilibrium."
+    concentrations_mg_L:
+      Na: 12480.0
+      K: 450.0
+      Mg: 1452.3
+      Ca: 450.0
+      Cl: 22099.0
+      SO4: 3406.0
+      HCO3: 160.0
+      CO3: null
+
+  red_sea_swro_brine_egypt:
+    title: "Red Sea SWRO Reject Brine — Egyptian Coastal Desalination Audit"
+    source_citation: "TDA Egypt Environmental Audit of Desalination Plants (tda.gov.eg)"
+    region: "Red Sea (Egypt)"
+    stream_type: "SWRO reject brine (~50% recovery)"
+    pH: 7.8
+    temperature_C: 25.0
+    tds_reported_mg_L: 80028.0
+    completeness: "missing_explicit_CO3"
+    missing_species: ["CO3"]
+    notes: "CO3(2-) derived strictly from measured pH and HCO3- thermodynamic equilibrium."
+    concentrations_mg_L:
+      Na: 24649.2
+      K: 888.0
+      Mg: 2877.7
+      Ca: 891.2
+      Cl: 43661.5
+      SO4: 6754.1
+      HCO3: 315.3
+      CO3: null
+
+  hypersaline_swro_santoro_2024_ic:
+    title: "Hypersaline SWRO Brine (IC Analysis, Incomplete Carbonate/pH)"
+    source_citation: "Santoro et al. (2024), Membranes 14(4), 87 [PMC11052490], Table 1"
+    region: "Mediterranean SWRO Concentrate"
+    stream_type: "Hypersaline SWRO brine"
+    pH: null
+    temperature_C: 25.0
+    tds_reported_mg_L: 88964.0
+    completeness: "incomplete_missing_HCO3_and_pH"
+    missing_species: ["HCO3", "pH"]
+    notes: "Report also lists NO3- = 130 ppm. Raw IC analysis shows cation excess (~13.8% CBE) and omits HCO3-/pH; audit-only unless parameterized explicitly."
+    concentrations_mg_L:
+      Na: 35902.0
+      K: 1356.0
+      Mg: 4236.0
+      Ca: 980.0
+      Cl: 41642.0
+      SO4: 4398.0
+      HCO3: null
+      CO3: 320.0

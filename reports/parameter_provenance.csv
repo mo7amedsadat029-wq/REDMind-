@@ -1,0 +1,43 @@
+parameter_name,symbol,value,unit,category,source_paper,section_table,notes
+Faraday constant,F,96485.3329,C/mol,Physical Constant,CODATA (2022),Fundamental constants,Standard electrochemical constant
+Universal gas constant,R,8.31446,J/(mol*K),Physical Constant,CODATA (2022),Fundamental constants,Molar gas constant
+Boltzmann constant,k_B,1.380649e-23,J/K,Physical Constant,CODATA (2022),Fundamental constants,CNT nucleation thermal energy scale
+Avogadro constant,N_A,6.02214076e23,1/mol,Physical Constant,CODATA (2022),Fundamental constants,Molecular volume conversion V_m / N_A
+Reference temperature,T_ref,298.15,K,Operating Condition,Gurreri et al. (2017),Section 2,Standard laboratory reference temperature (25 C)
+Water density (25C),rho,997.0,kg/m3,Fluid Property,CRC Handbook,Pure water 25C,Pure solvent reference density
+Dynamic viscosity (25C),mu_25C,0.00089,Pa*s,Fluid Property,Gurreri et al. (2017),Section 2.1,Scaled via Vogel correlation for T != 298.15 K
+Na+ tracer diffusivity (25C),D_Na,1.334e-9,m2/s,Transport Property,USGS pitzer.dat / Robinson & Stokes,Dw database,Scaled by Stokes-Einstein T/mu(T)
+K+ tracer diffusivity (25C),D_K,1.960e-9,m2/s,Transport Property,USGS pitzer.dat / Robinson & Stokes,Dw database,Multicomponent seawater/brine cation
+Mg2+ tracer diffusivity (25C),D_Mg,0.705e-9,m2/s,Transport Property,USGS pitzer.dat / Robinson & Stokes,Dw database,Hydrated divalent cation
+Ca2+ tracer diffusivity (25C),D_Ca,0.792e-9,m2/s,Transport Property,USGS pitzer.dat / Robinson & Stokes,Dw database,Key scaling cation
+Cl- tracer diffusivity (25C),D_Cl,2.032e-9,m2/s,Transport Property,USGS pitzer.dat / Robinson & Stokes,Dw database,Major halide anion
+SO4^2- tracer diffusivity (25C),D_SO4,1.070e-9,m2/s,Transport Property,USGS pitzer.dat / Robinson & Stokes,Dw database,Key gypsum scaling anion
+HCO3- tracer diffusivity (25C),D_HCO3,1.180e-9,m2/s,Transport Property,USGS pitzer.dat / Robinson & Stokes,Dw database,Bicarbonate buffer ion
+CO3^2- tracer diffusivity (25C),D_CO3,0.955e-9,m2/s,Transport Property,USGS pitzer.dat / Robinson & Stokes,Dw database,Carbonate ion for calcite saturation
+Binary NaCl ambipolar diffusivity,D_eff_NaCl,1.611e-9,m2/s,Transport Property,Nernst-Hartley relation,Derived,2*D_Na*D_Cl/(D_Na+D_Cl) at 298.15 K
+Channel height baseline,h,270.0e-6,m,Geometry,Gurreri et al. (2017),Section 2.1,Swept 150-400 um in Stage 1
+Channel length baseline,L,0.10,m,Geometry,Gurreri et al. (2017) / Long et al. (2018),Section 2.1,Swept 5-15 cm in Stage 1
+CEM/AEM thickness baseline,delta_m,125.0e-6,m,Membrane Property,Gurreri et al. (2017) / Tedesco et al. (2016),Table 1,Neosepta/Fujifilm Type 10 nominal thickness
+CEM fixed charge density baseline,X_CEM,-2000.0,mol/m3,Membrane Property,Tedesco et al. (2016) / Gurreri et al. (2017),Section 2.2,Swept -1500 to -4000 mol/m3
+AEM fixed charge density baseline,X_AEM,2000.0,mol/m3,Membrane Property,Tedesco et al. (2016) / Gurreri et al. (2017),Section 2.2,Swept +1500 to +4000 mol/m3
+Monovalent counterion membrane ratio,r_ct_1,0.08,-,Membrane Property,Tedesco et al. (2016) / Fujifilm Type 10,Calibrated ratio,Yields D_ct ~ 1.07e-10 m2/s and R_m ~ 1.5 Ohm*cm2
+Divalent counterion membrane ratio,r_ct_2,0.025,-,Membrane Property,Tedesco et al. (2016) / Part II (2017),Section 3,Hydrated divalent retardation inside IEM
+Monovalent co-ion membrane ratio,r_co_1,0.0008,-,Membrane Property,Tedesco et al. (2016),Section 3,Yields D_co ~ 1e-12 m2/s co-ion leakage
+Divalent co-ion membrane ratio,r_co_2,0.00025,-,Membrane Property,Tedesco et al. (2016),Section 3,Donnan-excluded divalent co-ion diffusivity
+Membrane conductivity baseline,sigma_mem,1.0,S/m,Membrane Property,Long et al. (2018) / Gurreri et al. (2017),Table 1,Swept 0.5-2.0 S/m in Stage 1
+Pump hydraulic efficiency,eta_pump,0.75,-,Hydraulic Property,Long et al. (2018),Section 2.3,Net power parasitic pumping efficiency
+Calcite log10 Ksp (25C),log10_Ksp_calcite,-8.480,-,Geochemical Property,USGS pitzer.dat (Plummer & Busenberg 1982),PHASES Calcite,Temperature polynomial analytic expression used
+Gypsum log10 Ksp (25C),log10_Ksp_gypsum,-4.580,-,Geochemical Property,USGS pitzer.dat (Harvie-Moller-Weare 1984),PHASES Gypsum,Includes osmotic water activity a_w^2 in IAP
+Pitzer virial interaction database,pitzer_HMW,-,kg/mol virial,Geochemical Property,Plummer et al. (1988) / Parkhurst & Appelo (2013),USGS pitzer.dat,B0 B1 B2 C0 THETA PSI LAMBDA & T-coeffs
+Calcite molar volume,Vm_calcite,36.9e-6,m3/mol,CNT Nucleation,USGS pitzer.dat,Line 265,Calcite crystal molar volume
+Gypsum molar volume,Vm_gypsum,73.9e-6,m3/mol,CNT Nucleation,USGS pitzer.dat,Line 333,Gypsum crystal molar volume
+Calcite-water interfacial energy,gamma_sl_calcite,0.094,J/m2,CNT Nucleation,Sohnel & Mullin (1982) / Santoro et al. (2021),Table 2 / Eq. 7,Sensitivity range 0.080-0.105 J/m2
+Gypsum-water interfacial energy,gamma_sl_gypsum,0.037,J/m2,CNT Nucleation,He et al. (1994),Section 2,Sensitivity range 0.025-0.045 J/m2
+CEM contact angle baseline,theta0_CEM,55.0,deg,CNT Nucleation,Santoro et al. (2021) / Membranes 2019,Table 1,Hydrophilic sulfonated membrane surface
+AEM contact angle baseline,theta0_AEM,65.0,deg,CNT Nucleation,Santoro et al. (2021) / Membranes 2019,Table 1,Swept 35-95 deg in CNT parametric space
+Wenzel roughness factor range,r_Wenzel,1.0-1.8,-,CNT Nucleation,Santoro et al. (2021),Eq. 9-10,Modifies cos(theta_eff) = r*cos(theta_0)
+El-Remel Mediterranean Feed/Brine,med_el_remel,39.8-57.1,g/L TDS,Brine Composition,Abdel-Aal et al. (2021),PMC8002872 Table 1,Complete 8-ion dataset (pH 8.0-8.1)
+Shammas Brackish RO Brine,shammas_bwro,15.1,g/L TDS,Brine Composition,Abdel-Aal et al. (2021),PMC8002872 Table 2,Complete 8-ion dataset (pH 8.0)
+Mediterranean SWRO Feed PMC9694509,med_pmc9694509,40.6,g/L TDS,Brine Composition,Membranes 12(11) 1045 (2022),PMC9694509 Table 2,Complete 8-ion dataset (28 C pH 8.1)
+Red Sea Egyptian Feed & Brine,red_sea_egypt,40.5-80.0,g/L TDS,Brine Composition,TDA Egypt Environmental Audit,tda.gov.eg Tables,CO3 derived from measured HCO3 + pH
+Hypersaline SWRO Brine (Excluded),santoro_2024_ic,89.0,g/L TDS,Brine Audit Only,Santoro et al. (2024),PMC11052490 Table 1,Excluded from PDEs (missing HCO3 & pH; 13.8% CBE)

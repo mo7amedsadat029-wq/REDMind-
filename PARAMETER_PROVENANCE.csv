@@ -1,0 +1,27 @@
+parameter_name,symbol,value,unit,category,source_paper,section_table,notes
+Faraday constant,F,96485.3329,C/mol,Physical Constant,CODATA (2022),Fundamental constants,Standard electrochemical constant
+Universal gas constant,R,8.31446,J/(mol*K),Physical Constant,CODATA (2022),Fundamental constants,Molar gas constant
+Reference temperature,T,298.15,K,Operating Condition,Gurreri et al. (2017),Section 2,Standard lab temperature 25 deg C
+Water density,rho,997.0,kg/m3,Fluid Property,CRC Handbook,Pure water 25C,Liquid water density
+Dynamic viscosity,mu,0.00089,Pa*s,Fluid Property,Gurreri et al. (2017),Section 2.1,Pure water viscosity at 298.15 K
+Na+ diffusion coefficient (inf. dil.),D_Na,1.334e-9,m2/s,Transport Property,Gurreri et al. (2017) / Robinson & Stokes,Table 1,Aqueous diffusion coefficient
+Cl- diffusion coefficient (inf. dil.),D_Cl,2.032e-9,m2/s,Transport Property,Gurreri et al. (2017) / Robinson & Stokes,Table 1,Aqueous diffusion coefficient
+Effective salt diffusion coefficient,D_eff,1.611e-9,m2/s,Transport Property,Nernst-Hartley equation,Derived,Ambipolar diffusivity 2*D_Na*D_Cl/(D_Na+D_Cl)
+Channel height,h,270.0e-6,m,Geometry,Gurreri et al. (2017),Section 2.1,Standard inter-membrane channel thickness
+Channel length,L,0.10,m,Geometry,Gurreri et al. (2017) / Long et al. (2018),Section 2.1,Streamwise active cell length 10 cm
+CEM membrane thickness,delta_m_CEM,125.0e-6,m,Membrane Property,Gurreri et al. (2017) / Tedesco et al. (2016),Table 1,Neosepta CMX equivalent thickness
+AEM membrane thickness,delta_m_AEM,125.0e-6,m,Membrane Property,Gurreri et al. (2017) / Tedesco et al. (2016),Table 1,Neosepta AMX equivalent thickness
+CEM fixed charge density,X_CEM,-2000.0,mol/m3,Membrane Property,Tedesco et al. (2016) / Gurreri et al. (2017),Section 2.2,Negative sulfonate charge groups
+AEM fixed charge density,X_AEM,2000.0,mol/m3,Membrane Property,Tedesco et al. (2016) / Gurreri et al. (2017),Section 2.2,Positive quaternary ammonium groups
+CEM counterion diffusivity,D_ct_CEM,1.0e-11,m2/s,Membrane Property,Tedesco et al. (2016),Section 3,Effective Na+ diffusivity inside CEM
+CEM coion diffusivity,D_co_CEM,1.0e-12,m2/s,Membrane Property,Tedesco et al. (2016),Section 3,Effective Cl- diffusivity inside CEM
+AEM counterion diffusivity,D_ct_AEM,1.0e-11,m2/s,Membrane Property,Tedesco et al. (2016),Section 3,Effective Cl- diffusivity inside AEM
+AEM coion diffusivity,D_co_AEM,1.0e-12,m2/s,Membrane Property,Tedesco et al. (2016),Section 3,Effective Na+ diffusivity inside AEM
+CEM conductivity,sigma_CEM,1.0,S/m,Membrane Property,Long et al. (2018) / Gurreri et al. (2017),Table 1,Commercial CEM ionic conductivity
+AEM conductivity,sigma_AEM,1.0,S/m,Membrane Property,Long et al. (2018) / Gurreri et al. (2017),Table 1,Commercial AEM ionic conductivity
+Inlet concentrated salinity,c_HC_inlet,500.0,mol/m3,Operating Condition,Gurreri et al. (2017),Section 2.1,Seawater equivalent (~30 g/L NaCl)
+Inlet dilute salinity,c_LC_inlet,17.0,mol/m3,Operating Condition,Gurreri et al. (2017),Section 2.1,River water equivalent (~1 g/L NaCl)
+Concentrated inlet mean velocity,u_HC,0.01,m/s,Operating Condition,Gurreri et al. (2017) / Long et al. (2018),Section 2.1,Standard laminar superficial velocity (1 cm/s)
+Dilute inlet mean velocity,u_LC,0.01,m/s,Operating Condition,Gurreri et al. (2017) / Long et al. (2018),Section 2.1,Standard laminar superficial velocity (1 cm/s)
+Pump hydraulic efficiency,eta_pump,0.75,-,Hydraulic Property,Long et al. (2018),Section 2.3,Centrifugal pump efficiency factor
+Calcite solubility product (25C),log10_Ksp_calcite,-8.48,-,Geochemical Property,Parkhurst & Appelo (2013) / Santoro et al. (2021),Table 2,Equilibrium constant at 298.15 K

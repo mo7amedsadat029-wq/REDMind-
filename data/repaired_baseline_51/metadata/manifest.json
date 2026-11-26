@@ -1,0 +1,7 @@
+{
+  "dataset_title": "REDMind Repaired Baseline 51 Cases (v2.0.0)",
+  "version": "2.0.0-repaired-baseline",
+  "note": "Regenerated with repaired bottom-wall Neumann flux BC sign; data/original_51_cases/ preserved untouched.",
+  "num_converged_cases": 51,
+  "num_failed_cases": 0
+}
