@@ -1,29 +1,13 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "server.ts",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": [
-          "data/**",
-          "results/**",
-          "lib/**"
-        ]
-      }
-    },
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
+  "functions": {
+    "api/index.ts": {
+      "includeFiles": "{data,results}/**"
     }
-  ],
-  "routes": [
-    { "src": "/api/(.*)", "dest": "/server.ts" },
-    { "src": "/figures/(.*)", "dest": "/server.ts" },
-    { "src": "/presentation-slides/(.*)", "dest": "/server.ts" },
-    { "src": "/(.*)", "dest": "/dist/$1" }
+  },
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/index" },
+    { "source": "/figures/(.*)", "destination": "/api/index" },
+    { "source": "/presentation-slides/(.*)", "destination": "/api/index" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
