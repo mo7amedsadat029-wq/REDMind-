@@ -1,13 +1,13 @@
 {
   "functions": {
-    "api/index.mjs": {
-      "includeFiles": "{data,results}/**"
+    "api/index.js": {
+      "includeFiles": "{configs,data,results,reports,PARAMETER_PROVENANCE.csv}/**"
     }
   },
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/index.mjs" },
-    { "source": "/figures/(.*)", "destination": "/api/index.mjs" },
-    { "source": "/presentation-slides/(.*)", "destination": "/api/index.mjs" },
+    { "source": "/api/(.*)", "destination": "/api/index.js" },
+    { "source": "/figures/(.*)", "destination": "/api/index.js" },
+    { "source": "/presentation-slides/(.*)", "destination": "/api/index.js" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
