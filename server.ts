@@ -179,8 +179,6 @@ const FIGURE_CATALOG: Array<{
 
 const app = express();
 app.use(express.json({ limit: '2mb' }));
-  const app = express();
-  app.use(express.json({ limit: '2mb' }));
 
   // Serve static PNG figures directly
   app.use(
