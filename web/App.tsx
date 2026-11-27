@@ -265,7 +265,7 @@ export const App: React.FC = () => {
       <footer className="border-t border-[#1C2536] py-3 px-6 text-xs text-slate-500">
         <div className="max-w-[1440px] mx-auto flex flex-wrap items-center justify-between gap-4">
           <span>
-            REDMind v2.1.0 · 2D Reverse Electrodialysis Multiphysics &amp; Mineral Scaling Platform
+            REDMind v2.1.0 · © 2026 Mohamed Mohamed Sadat &amp; Seif Eldin Montaser · All Rights Reserved
           </span>
           <span className="font-mono tabular-nums">
             {overview

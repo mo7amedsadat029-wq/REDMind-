@@ -11,6 +11,7 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 import { DatasetCategory, LibrarySubTab, NavTab, OverviewPayload } from '../types';
+import { TeamAndIpSection } from '../components/TeamAndIpSection';
 
 interface OverviewViewProps {
   overview: OverviewPayload | null;
@@ -417,6 +418,9 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
           </table>
         </div>
       </section>
+
+      {/* Team, Contact & Intellectual Property Attribution */}
+      <TeamAndIpSection />
     </div>
   );
 };
